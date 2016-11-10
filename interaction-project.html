@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+    
+    <script>
+    // The variables that is being used in the code
+    var c1;
+    var c2;
+    var c3;
+    var x1;
+    var x2;
+    var x3;
+    var v1;
+    var v2;
+    var v3;
+    
+    function setup() {
+        // The size of the canvas
+        createCanvas(500, 500);
+        
+        // Values given to each variable
+        c1=255
+        c2=255
+        c3=255
+        x1=255
+        x2=255
+        x3=255
+        v1=255
+        v2=255
+        v3=255
+    }
+
+    function draw() {
+        // Making the shape looks smooth
+        smooth();
+        
+        // Creating a circle and a square that have the same color
+        fill(c1,c2,c3)
+        ellipse(mouseY,mouseX,20,20)
+        rect(mouseY,mouseX,50,50)
+        
+        // Changing the color of the triangle and making one corner of the triangle to follow the mouse
+        fill(x1,x2,x3)
+        triangle(mouseX, mouseY, 0, 0, 86, 75)
+        
+        // This create a curve that don't show color between the line but only show on the stroke
+        noFill()
+        // The stroke is also use for the stroke on the other shapes
+        stroke(v1, v2, v3);
+        // A point of the curve is following the mouse and moving the curve up and down
+        curve(5, 26, 5, mouseY, mouseX, mouseY, 73, 61);
+
+        
+
+    }
+    
+    function mouseMoved() {
+        // When the mouse is moved, the background color change randomly
+        background(random(0,255),random(0,255),random(0,255))
+
+        
+    }
+    
+    function keyPressed() {
+        // When any key is pressed, the values for the varible changes randomly so the color of the shapes and stroke is different
+        c1 = random(255)
+        c2 = random(255)
+        c3 = random(255)
+        x1 = random(255)
+        x2 = random(255)
+        x3 = random(255)
+        v1 = random(255)
+        v2 = random(255)
+        v3 = random(255)
+        
+    }
+    </script>
+</head>
+
+<body>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/dive0/p5js/blob/gh-pages/interaction-project.html?footer=0"></script>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+
+</html>
