@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.13/p5.js"></script>
+    <script>
+      // the variables
+      var x1, y1,w
+      function setup() {
+        // The canvas size
+        createCanvas(500,500);
+        
+        // The value for each variable
+        x1 = 10
+        y1 = 0
+        w = 20
+        
+        // background color
+        background("black")
+        
+        // The text size, text color, the text
+        textSize(30)
+        fill("blue")
+        text("Press s to start", width/3, height * 3/4)
+        fill(255,0,0)
+        text("Don't let the ellipse",width/5,height/7)
+        text("touch the rectangles",width/4,height/5)
+        textSize(20)
+        fill("green")
+        text("Start on the upper",width/5,height/3)
+        text("left by moving your mouse towards it",width/5,200)
+        text("and moving to the lower right",width/5,240)
+      }
+      function draw() {
+        // The ellipse
+        fill("black")
+        ellipse(mouseX,mouseY,w,w)
+        
+        // When s is pressed, backgroung change to gray, draw rectangles, text showing at the end
+        if(key=="s"){
+            background("gray")
+            fill("blue")
+            rect(x1,y1,30, 480)
+            rect(x1 + 40,y1 +20,30, 480)
+            rect(x1 + 80,y1,30, 480)
+            rect(x1 + 120,y1 +20,30, 480)
+            rect(x1 + 160,y1,30, 480)
+            rect(x1 + 200,y1 +20,30, 480)
+            rect(x1 + 240,y1,30, 480)
+            rect(x1 + 280,y1 +20,30, 480)
+            rect(x1 + 320,y1,30, 480)
+            rect(x1 + 360,y1 +20,30, 480)
+            rect(x1 + 400,y1,30, 480)
+            rect(x1 + 440,y1 + 20,30, 480)
+            textSize(15)
+            text("E",width-15,height-30)
+            text("N",width-15,height-20)
+            text("D",width-15,height-10)
+        }
+        
+        // When the mouse is on any of the point
+        if(mouseX >= x1 && mouseX <= 40 && mouseY <= 480 ||
+            mouseX >= x1+40 && mouseX <= 80 && mouseY >= 20 ||
+            mouseX >= x1+80 && mouseX <= 120 && mouseY <= 480 ||
+            mouseX >= x1+120 && mouseX <= 160 && mouseY >= 20 ||
+            mouseX >= x1+160 && mouseX <= 200 && mouseY <= 480 ||
+            mouseX >= x1+200 && mouseX <= 240 && mouseY >= 20 ||
+            mouseX >= x1+240 && mouseX <= 280 && mouseY <= 480 ||
+            mouseX >= x1+280 && mouseX <= 320 && mouseY >= 20 ||
+            mouseX >= x1+320 && mouseX <= 360 && mouseY <= 480 ||
+            mouseX >= x1+360 && mouseX <= 400 && mouseY >= 20 ||
+            mouseX >= x1+400 && mouseX <= 440 && mouseY <= 480 ||
+            mouseX >= x1+440 && mouseX <= 480 && mouseY >= 20) {
+            
+            // background change to black
+            background("black")
+            
+            // Text size, text color, text
+            textSize(30)
+            fill("blue")
+            text("Press s to start", width/3, height * 3/4)
+            fill(255,0,0)
+            text("Don't let the ellipse",width/5,height/7)
+            text("touch the rectangles",width/4,height/5)
+            textSize(20)
+            fill("green")
+            text("Start on the upper",width/5,height/3)
+            text("left by moving your mouse towards it",width/5,200)
+            text("and moving to the lower right",width/5,240)
+        }
+        
+        // When the mouse is on the point
+        else if (mouseX >= width-15 && mouseY >= height-13){
+            
+            // background change to green
+            background("green")
+            
+            // Text size, text color, text
+            textSize(20)
+            fill("yellow")
+            text("Congratulation! You Won!",width/3,height/5)
+        }
+      } 
+
+    </script>
+</head>
+
+<body>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/dive0/p5js/blob/gh-pages/conditional-project.html?footer=0"></script>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+
+</html>
