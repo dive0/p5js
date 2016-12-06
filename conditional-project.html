@@ -37,9 +37,12 @@
         fill("black")
         ellipse(mouseX,mouseY,w,w)
         
-        // When s is pressed, backgroung change to gray, draw rectangles, text showing at the end
+        // When s is pressed 
         if(key=="s"){
+            //backgroung change to gray
             background("gray")
+            
+            //draw rectangles
             fill("blue")
             rect(x1,y1,30, 480)
             rect(x1 + 40,y1 +20,30, 480)
@@ -53,6 +56,8 @@
             rect(x1 + 360,y1 +20,30, 480)
             rect(x1 + 400,y1,30, 480)
             rect(x1 + 440,y1 + 20,30, 480)
+            
+            //text showing at the end
             textSize(15)
             text("E",width-15,height-30)
             text("N",width-15,height-20)
