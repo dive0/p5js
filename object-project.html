@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+    
+    <script>
+        // variables
+        var x 
+        var y 
+        var obstacles = [] //array
+       
+        function setup() {
+            createCanvas(700,600); //size of the canvas
+            
+            //giving the variables a value
+            x = width/2
+            y = height/2
+        }
+    
+        function draw() {
+            background(0) //background will be black
+            noStroke() //delete the border
+            textSize(20) //size of the word
+            text("Total Time: 4000",30,30) //show the words at 30,30
+            text("Time Now: " + frameCount, 30,60) //show the current number of frames since the prgram started
+            square(random(255),random(255),random(255)) //calling the square function and changing the color of the square to random
+            keyPressed() //calling the keyPressed function
+            
+            if(frameCount == 4000){ //when the number of frames reaches 4000
+                text("You Win!",width/2,height/2) //display You Win! in the middle of the canvas
+                noLoop() //the code stops
+            }
+            
+            if(frameCount% 30 == 0){ //Every 30 frames
+                obstacles.push(new Obstacle(random(255),random(255),random(255),random(50))) //Add a new instance in the array and the color and size will be random
+            }
+
+            for(i = 0; i < obstacles.length; i++){ //loop for setting a new varible and when the new variable is less than array length, the code in the loop will run and increase the value for the new varible by 1
+                obstacles[i].move() //makes the instance that is in the array moves
+                obstacles[i].display() //display the instance in the array
+                if(obstacles[i].y > y && obstacles[i].y < y+50){ //when the instance's y value is greater than the square's y value and when the instance's y value is less than the square's height
+                    if(obstacles[i].x < x + 50 && obstacles[i].x > x){ //when the instance's x value is less than the square's width and when the instance's x value is greater than the square's x value
+                        textSize(20) //size of the word
+                        fill(255) //set the text color to white
+                        text("You Lose!",width/2,height/2) //display You Lose! in the middle of the canvas
+                        noLoop() //the code stops
+                    }
+                }
+            }
+        }
+        
+        function square(r,g,b){ //function for square with parameters
+            x = constrain(x,0,width-50); //the x value of the square will stay inside the canvas
+            y = constrain(y,0,height-50); //the y value of the square will stay inside the canvas
+            fill(r,g,b) //color of the square
+            rect(x,y,50,50) //makes the square
+        }
+      
+        function keyPressed(){ //function for keyPressed
+            if(key == "d"){ //when d is pressed
+                x+=5 //square moves to the right
+            }
+            else if(key == "a"){ //when a is prssed
+                x-=5 //square moves to the left
+            }
+            else if(key == "s"){ //when s is pressed
+                y+=5 //square moves down
+            }
+            else if(key == "w"){ //when w is pressed
+                y-=5 //square moves up
+            }
+        }
+      
+        function Obstacle(r,g,b,s){ //class fuunction with parameters
+            this.x = random(width) //x value of each instances will be random
+            this.y = random(height) //y value of each instances will be random
+          
+            this.move = function(){ //function for moving each instances
+                if(frameCount > -1 && frameCount < 1000){ //when frame is 0 to 999
+                    this.x += random(5); //the instances moves to the right
+                    this.y -= random(5); //the instances moves up
+                }
+                else if(frameCount > 999 && frameCount < 2000){ //when frame is 1000 to 1999
+                    this.x -= random(5); //the instances moves to the left
+                    this.y -= random(5); //the instances moves up
+                }
+                else if(frameCount > 1999 && frameCount < 3000){ //when frame is 2000 to 2999
+                    this.x += random(5); //the instances moves to the right
+                    this.y += random(5); //the instances moves down
+                }
+                else if(frameCount > 2999 && frameCount < 4001){ //when frame is 3000 to 4000
+                    this.x -= random(5); //the instances moves to the left
+                    this.y += random(5); //the instances moves down
+                }
+            }
+          
+            this.display = function(){ //function for showing each instances
+                strokeWeight(4) //the size for the border of the shapes
+                stroke(r,g,b) //the color for the border of the shapes
+                ellipse(this.x,this.y,s,s) //draws the obstacles at a certain location with a certain size
+            }
+        }
+        
+        function mousePressed(){ //function for mouse pressed
+            obstacles.push(new Obstacle(random(255),random(255),random(255),random(100))) //adding more instances to the array
+        }
+      
+    
+    </script>
+</head>
+
+<body>
+    <form><input TYPE="button" onClick="history
+    .go(0)" value="Reset"></form>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/dive0/p5js/blob/gh-pages/object-project.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+
+
+</body>
+
+</html>
