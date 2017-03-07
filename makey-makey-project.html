@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+    
+    <script>
+        var x1, y1, x2 //variables
+        
+        function setup() {
+            createCanvas(600,500) //canvas size
+            x1 = width/3 - 40 //value of x1
+            y1 = height/2 //value of y1
+            x2 = width - width/3 + 50 //value of x2
+        }
+
+        function draw() {
+            background("gray") //background color is gray
+            fill(255,0,0) // rectangle color is red
+            noStroke() //no border
+            rect(width/2,height/2 - 40, 10, 90) //creating a rectangle
+            stroke("blue") //change the border color for the line to blue
+            strokeWeight(5) //size of the border is 5
+            line(x1,y1,x2,y1) //creating a line
+            keyPressed() //calling the function keyPressed
+            ending() //calling the function ending
+        }
+        
+        function keyPressed(){
+            if(keyCode == LEFT_ARROW){ //when left arrow is pressed
+                x1 -= 5 // The line
+                x2 -= 5 // move to the left 
+            }
+            if(keyCode == RIGHT_ARROW){ //when right arrow is pressed
+                x1 += 5 //The line
+                x2 += 5 //move to the right
+            }
+        }
+        function ending(){
+            if(x1 >= width/2 + 5){ //when left side of the line pass the red triangle
+                textSize(20) //set word size to 20
+                stroke("green") //the boder of the text is green
+                text("Winner: Player 2", width/2, height/2) //Show the text
+                noLoop() //game stop
+            }
+            if(x2 <= width/2 +5){ // when right side of the line pass the red triangle
+                textSize(20) //set word size to 20
+                stroke("green") //the boder of the text is green
+                text("Winner: Player 1", width/2-145, height/2) //Show the text
+                noLoop() //game stop
+            }
+        }
+        
+    </script>
+</head>
+
+<body>
+    <form><input TYPE="button" onClick="history
+    .go(0)" value="Reset"></form>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/dive0/p5js/blob/gh-pages/makey-makey-project.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas').remove());
+        });
+    </script>
+
+</body>
+
+</html>
